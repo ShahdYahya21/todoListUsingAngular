@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <p class = "pageTitle" >My To-Do List</p>
+    <p class = "addTaskPrompt">Task to complete</p>
+    <input type="text" placeholder="Enter your task here" class = "taskInput" [formControl] = "newTask"/>
+    <div class = "buttonContainer"> 
+      <button  (click)="submit()" class = "submitButton" >Submit</button>
+      @if(newTask.invalid && submitted) {
+          <div class="error" >newTask is required</div>
+      }
+    </div>
+    <div class = "tableHeader">
+    <div class = "task">Task</div>
+    <div class = "completed">Completed</div>
+    <div class = "delete">Delete</div>
+    </div>
+      @if(newTaskName) {
+        <app-todo-list-component [todoTask]= "newTaskName"></app-todo-list-component>
+      }
+      
+
+  </body>
+</html>

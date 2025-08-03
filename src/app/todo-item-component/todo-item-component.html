@@ -1,0 +1,9 @@
+<div class = "todoItemContainer">
+<div class="task" [ngStyle]="this.localTodoItem.completed ? { color: color } : {}">{{localTodoItem.task}}</div>
+ <div class = "completedContainer">
+    <input type="checkbox" class = "completed"  (click) = "completeMark()"/>
+ </div>
+ <div class = "deleteContainer">
+   <button class = "delete">Delete</button>
+</div>
+  </div>
