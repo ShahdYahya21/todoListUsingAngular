@@ -4,7 +4,9 @@ type todoItem = {
   id : number;
   task: string;
   completed: boolean;
-  deleted: boolean;
+  markAsDeleted: boolean;
+  confirmDeletion : boolean;
+
 };
 
 @Injectable({
@@ -19,7 +21,8 @@ export class TodoService {
       id : this.id,
       task : newTask,
       completed : false,
-      deleted : false
+      markAsDeleted: false,
+      confirmDeletion : false
     }
     this.todoItems.push(todoTask); 
     this.id++; 
@@ -29,7 +32,9 @@ export class TodoService {
     return this.todoItems;
   }
 
-  deleteTask(){
+  deleteTask(todoID : number){
+    this.todoItems = this.todoItems.filter(todo => todo.id !== todoID);
+
 
   }
 

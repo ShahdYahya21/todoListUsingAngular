@@ -11,7 +11,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './AppComponent.html',
   styleUrl: './AppComponent.css'
 })
-export class App {
+export class AppComponent {
   protected readonly title = signal('todo-list');
   newTask = new FormControl('', Validators.required);
   newTaskName: string = '';

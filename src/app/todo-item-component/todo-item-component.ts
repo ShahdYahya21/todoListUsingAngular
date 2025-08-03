@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { TodoService } from '../todo-service'; 
 import { NgStyle } from '@angular/common';
 
@@ -6,7 +6,8 @@ type todoItem = {
   id : number,
   task: string;
   completed: boolean;
-  deleted: boolean;
+  markAsDeleted: boolean;
+  confirmDeletion : boolean;
 };
 
 @Component({
@@ -19,20 +20,23 @@ type todoItem = {
 export class TodoItemComponent {  
 constructor(private TodoService: TodoService) {}
 color = 'blue';
+@Output() deleteClick = new EventEmitter<void>();
 
 
  @Input() todoItem: todoItem = {
   id : 0,
   task: '',
   completed: false,
-  deleted: false
+  markAsDeleted: false,
+  confirmDeletion : false
 };
 
 localTodoItem: todoItem = {
   id : 0,
   task: '',
   completed: false,
-  deleted: false
+  markAsDeleted: false,
+  confirmDeletion : false
 };
 
 ngOnChanges() {
@@ -40,13 +44,18 @@ ngOnChanges() {
 }
 
 completeMark(){
-   console.log(this.localTodoItem.id + ' before ' + this.localTodoItem.completed + '(in component)');
+  console.log(this.localTodoItem.id + ' before ' + this.localTodoItem.completed + '(in component)');
 
  this.localTodoItem = { ...this.TodoService.toggleTheCompletionStatus(this.localTodoItem.id)};
  console.log(this.localTodoItem.id + ' after ' + this.localTodoItem.completed + '(in component)');
 
-
 }
+deleteTodo(){
+  this.localTodoItem.markAsDeleted = false;
+  this.TodoService.deleteTask(this.localTodoItem.id);
+  this.deleteClick.emit();
+}
+
 
 
 }

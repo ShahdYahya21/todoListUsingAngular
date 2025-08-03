@@ -6,8 +6,8 @@ type todoItem = {
   id : number,
   task: string;
   completed: boolean;
-  deleted: boolean;
-};
+  markAsDeleted: boolean;
+  confirmDeletion : boolean;};
 
 @Component({
   selector: 'app-todo-list-component',
@@ -26,6 +26,12 @@ export class TodoListComponent {
     this.todoTasks = this.TodoService.getTasks();
 
   }
+
+  getTodos(){
+    this.todoTasks = this.TodoService.getTasks();
+  }
+
+
 
 
 }
