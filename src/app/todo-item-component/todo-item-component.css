@@ -2,13 +2,15 @@
     display: grid;
     grid-template-columns: 280px 260px 100px;
     align-items: center;
-    margin-left : 300px;
+    margin-left : 400px;
     width: 600px;
     height: 50px;
     padding-top: 2px;
     padding-bottom: 2px;
     border-bottom: 1px solid #ccc;
     word-wrap: break-word;
+    margin: 0px auto;
+
      
 }
 .delete{
@@ -33,6 +35,9 @@
     font-size: 15px;
     font-family: "Roboto";
     margin-right: 40px;
+    margin-left: 5px;
+
+
 }
 
 .overlay {

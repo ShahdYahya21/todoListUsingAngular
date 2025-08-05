@@ -12,18 +12,21 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './AppComponent.css'
 })
 export class AppComponent {
-  protected readonly title = signal('todo-list');
   newTask = new FormControl('', Validators.required);
-  newTaskName: string = '';
+  SearchedTask = new FormControl();
+  newTaskName = '';
   submitted = false;
-  submit() {
-      this.submitted = true;
-      if (this.newTask.invalid) {
-        return;
-  }
-      this.submitted = false;
-      this.newTaskName = this.newTask.value ?? '';
-      this.newTask.reset();
-  }
 
+  submit() {
+    this.submitted = true;
+
+    if (this.newTask.invalid) {
+      return;
+    }
+
+    this.newTaskName = this.newTask.value ?? '';
+    this.newTask.reset();
+    this.submitted = false;
+
+  }
 }

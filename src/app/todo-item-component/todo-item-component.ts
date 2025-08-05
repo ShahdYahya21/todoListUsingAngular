@@ -7,13 +7,12 @@ type todoItem = {
   task: string;
   completed: boolean;
   markAsDeleted: boolean;
-  confirmDeletion : boolean;
 };
 
 @Component({
   selector: 'app-todo-item-component',
   standalone: true,
-  imports: [NgStyle],
+  imports: [NgStyle],      
   templateUrl: './todo-item-component.html',
   styleUrl: './todo-item-component.css'
 })
@@ -28,7 +27,6 @@ color = 'blue';
   task: '',
   completed: false,
   markAsDeleted: false,
-  confirmDeletion : false
 };
 
 localTodoItem: todoItem = {
@@ -36,7 +34,6 @@ localTodoItem: todoItem = {
   task: '',
   completed: false,
   markAsDeleted: false,
-  confirmDeletion : false
 };
 
 ngOnChanges() {
@@ -54,7 +51,9 @@ deleteTodo(){
   this.localTodoItem.markAsDeleted = false;
   this.TodoService.deleteTask(this.localTodoItem.id);
   this.deleteClick.emit();
+
 }
+
 
 
 

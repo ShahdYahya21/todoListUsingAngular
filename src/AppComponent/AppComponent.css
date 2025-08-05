@@ -4,44 +4,16 @@
     text-align: center;
     font-weight: bold;
 }
-.addTaskPrompt{
-    font-size: 16px;
-    font-weight: bold;
-    font-family: "Roboto";
-    margin-left: 300px;
-    margin-bottom: 0px;
+.addTaskPrompt {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Roboto";
+  margin-bottom: 0px;
+  margin-top: 40px;
 }
-.taskInput{
-    margin-left: 300px;
-    font-size: 14px;
-    font-family: "Roboto";
-    padding: 5px;
-    margin-top: 5px;
-    width: 600px;
-    padding-left: 5px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-
-
-}
-.buttonContainer{
-    margin-left: 300px;
-    margin-top: 20px;
-}
-.submitButton{
-    font-size: 15px;
-    font-family: "Roboto";
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: #437fc8; /* Green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.page {
+  width: 600px;
+  margin: 0px auto;
 }
 
 .tableHeader{
@@ -50,15 +22,61 @@
     font-weight: bold;
     font-size: 18px;
     font-family: "Roboto";
-    margin-left: 300px;
+    margin: 5px auto; 
     margin-top: 40px;
     width: 600px;
     padding-top: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
-
-
+}
+.addTaskContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  margin: 0px auto; 
+  gap: 16px; 
+}
+.input{
+     flex: 1;
+}
+.taskInput,.taskSearch{
+    font-size: 14px;
+    font-family: "Roboto";
+    margin-top: 5px;
+    width: 100%;
+    max-width: 500px;    
+    padding-left: 5px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 
 }
+
+.submitButton{
+    font-size: 15px;
+    font-family: "Roboto";
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #437fc8; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.errorContainer{
+    font-family: "Roboto";
+    font-size: 15px;
+    color : rgb(189, 21, 21);
+
+}
+
+
+
+
 
