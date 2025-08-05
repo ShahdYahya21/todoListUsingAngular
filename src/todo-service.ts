@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-
-
-type todoItem = {
-  id : number;
-  task: string;
-  completed: boolean;
-  markAsDeleted: boolean;
-
-};
+import { TodoItem } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -17,26 +9,24 @@ export class TodoService {
   constructor(private cookieService: CookieService) {
    }
 
-  private todoItems: todoItem[] = [];
+  private todoItems: TodoItem[] = [];
   filteredTasks: string[] = [];
 
 
  addTask(newTask: string) {
-  console.log(newTask + ' typed');
   const maxId = this.todoItems.reduce((max, item) => item.id > max ? item.id : max, 0);
-  const todoTask: todoItem = {
+  const todoTask: TodoItem = {
     id: maxId + 1,
-    task: newTask,
+    task: newTask.trimStart(), 
     completed: false,
     markAsDeleted: false,
   };
 
   this.todoItems.push(todoTask);
-  console.log(todoTask.id + ' pushed');
   this.cookieService.set('TestCookie', JSON.stringify(this.todoItems));
 }
 
-  getTasks() : todoItem[]{
+  getTasks() : TodoItem[]{
     this.loadFromCookie(); 
     return this.todoItems;
   }
@@ -50,7 +40,7 @@ export class TodoService {
 
 
 
-  toggleTheCompletionStatus (todoID : number) : todoItem {
+  toggleTheCompletionStatus (todoID : number) : TodoItem {
     for(const task of this.todoItems){
       if(task.id === todoID) {
         console.log(task.id + ' before ' + task.completed + '(in service)');
@@ -65,18 +55,13 @@ export class TodoService {
 }
 
 
-
-searchTasks(task: string): todoItem[] {
+searchTasks(task: string): TodoItem[] {
   this.loadFromCookie(); 
-  const lowerQuery = task.toLowerCase();
+  const lowerQuery = task.trimStart().toLowerCase(); 
   return this.todoItems.filter(item =>
     item.task.toLowerCase().startsWith(lowerQuery)
   );
 }
-
-
-
-
 
 private loadFromCookie(): void {
   const cookie = this.cookieService.get('TestCookie');
